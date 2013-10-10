@@ -1,5 +1,5 @@
 default[:cassandra] = {
-  :cluster_name => "Duke",
+  :cluster_name => "Test Cluster",
   :initial_token => "",
   :version => '1.2.10',
   :user => "cassandra",
@@ -28,7 +28,7 @@ default[:cassandra] = {
   :max_heap_size    => nil,
   :heap_new_size    => nil,
   :vnodes           => false,
-  :seeds            => [],
+  :seeds            => [node[:ipaddress]],
   :concurrent_reads => 32,
   :concurrent_writes => 32,
   :snitch           => 'SimpleSnitch'

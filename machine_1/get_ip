@@ -1,0 +1,3 @@
+#!/bin/bash
+
+vagrant ssh -c "python synced/code/just_get_my_damn_ip.py" 

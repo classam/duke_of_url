@@ -92,10 +92,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "chef_cache" 
     chef.add_recipe "apt" 
     chef.add_recipe "java"
-    chef.add_recipe "cassandra_first"
-    chef.add_recipe "netifaces" 
+    chef.add_recipe "cassandra_next"
     chef.add_recipe "flask"
+    chef.add_recipe "netifaces" 
     chef.json = {
+      :cassandra => {
+        :seeds => [ '192.168.1.86' ]
+      },
       :java => {
         :install_flavor => 'oracle',
         :jdk_version => 7,
