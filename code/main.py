@@ -9,9 +9,21 @@ db = SafetyDB()
 def hello_world():
     return 'I am up and running! Give me a url!'
 
-@app.route('/<path:url>')
-def checkurl(url):
-    return json.dumps(db.checkUrl( url ))
+@app.route('/urlinfo/1/<hostname>:<int:port>/<path:path>')
+def checkurl(hostname, port=80, path=""):
+    return json.dumps(db.checkUrl( hostname + ":" + str(port) + "/" + path ))
+
+@app.route('/urlinfo/1/<hostname>:<int:port>/')
+def checkurl_nopath(hostname, port):
+    return checkurl(hostname, port)
+
+@app.route('/urlinfo/1/<hostname>/<path:path>')
+def checkurl_noport(hostname, path):
+    return checkurl(hostname, path=path)
+
+@app.route('/urlinfo/1/<hostname>')
+def checkurl_justhost(hostname):
+    return checkurl(hostname)
 
 if __name__ == '__main__':
     app.debug = True

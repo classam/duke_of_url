@@ -7,11 +7,11 @@ class SafetyDB(object):
         Create a connection to the Safety DB
 
         >>> db = SafetyDB()
-        >>> rt = db.checkUrl( "http://curtis.lassam.net" )
+        >>> rt = db.checkUrl( "curtis.lassam.net:80/" )
         >>> print rt["status"]
         SAFE
         >>> print rt["url"]
-        http://curtis.lassam.net
+        curtis.lassam.net:80/
         >>> db.close()
         """
         import cql
