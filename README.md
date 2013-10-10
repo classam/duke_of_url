@@ -41,4 +41,9 @@ Instructions
 Todo
 ----
 
-* Interface for adding new URL data 
+* Some kind of security? I'm like 90% sure publicly accessible DB and
+   publicly modifiable URL safety data is not kosher. 
+* Script to generate urls to cram down the service's throat
+* Report on the service's capacity and load to determine when to create
+    new services. 
+* Put up servers. Take down servers. How flexible is this thing? 
