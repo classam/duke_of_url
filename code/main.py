@@ -1,6 +1,9 @@
 from flask import Flask, Response
-from db import SafetyDB
 import json
+
+from db import SafetyDB
+import config
+
 
 app = Flask(__name__)
 db = SafetyDB()
@@ -29,5 +32,5 @@ def checkurl_justhost(hostname):
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(host='0.0.0.0')
+    app.run(host=config.flask_host)
     db.close()

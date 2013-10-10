@@ -1,3 +1,7 @@
+import cql
+
+import config
+
 # To run automated tests, $ python db.py -v 
 # At the moment, the test depends on test data in the DB. 
 
@@ -14,11 +18,10 @@ class SafetyDB(object):
         curtis.lassam.net:80/
         >>> db.close()
         """
-        import cql
         # TODO: tie these to an external config 
-        host = 'localhost'
-        port = 9160
-        keyspace = 'duke'
+        host = config.cass_host
+        port = config.cass_port
+        keyspace = config.cass_keyspace
 
         self.connection = cql.connect(host, port, keyspace, cql_version='3.0.0')
         self.cursor = self.connection.cursor()
