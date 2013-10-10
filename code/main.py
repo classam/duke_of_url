@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, Response
 from db import SafetyDB
 import json
 
@@ -11,7 +11,9 @@ def hello_world():
 
 @app.route('/urlinfo/1/<hostname>:<int:port>/<path:path>')
 def checkurl(hostname, port=80, path=""):
-    return json.dumps(db.checkUrl( hostname + ":" + str(port) + "/" + path ))
+    return Response( 
+            json.dumps(db.checkUrl( hostname + ":" + str(port) + "/" + path )),
+            mimetype='application/json' )
 
 @app.route('/urlinfo/1/<hostname>:<int:port>/')
 def checkurl_nopath(hostname, port):

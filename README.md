@@ -33,7 +33,6 @@ Instructions
 Todo
 ----
 
-* make sure the response has the 'application/JSON' mimetype 
 * Move config options to an external file or environment variables
 * Create machine_02
 * Interface for adding new URL data 
