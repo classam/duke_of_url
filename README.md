@@ -26,11 +26,12 @@ Instructions
 9. `cqlsh <ip> < install.cql` ( using the machine's IP, 
     the public 192.168.X.X one, not the private 10.X.X.X one )
 11. `python main.py` .
-12. Open a browser and visit <ip>:5000
-13. Type in <ip>:5000/http://curtis.lassam.net 
+12. Open a browser and visit `<ip>:5000`
+13. Type in `<ip>:5000/curtis.lassam.net:80/index.html` . 
+    Ideally, everything is working. 
 14. To create a second machine, open machine_2/Vagrantfile
 15. Replace the IP in the line `:seeds => [ '192.168.1.86' ]` 
-    with the IP of the first server.  
+    with the IP of machine_1.  
 16. `vagrant up`
 17. `vagrant ssh`
 18. `cd synced/code/`
