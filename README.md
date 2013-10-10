@@ -21,9 +21,11 @@ Instructions
 5. From the git shell, navigate to `<code_location>/machine_1` 
 6. `vagrant up`
 7. `vagrant ssh` or configure PuTTY to communicate with Vagrant
+8. `ifconfig`. Take note of the ip. 
 8. `cd synced/code/`
-9. `cqlsh < install.cql`
-11. `python main.py` . Take note of the ip.
+9. `cqlsh <ip> < install.cql` ( using the machine's IP, 
+    the public 192.168.X.X one, not the private 10.X.X.X one )
+11. `python main.py` .
 12. Open a browser and visit <ip>:5000
 13. Type in <ip>:5000/http://curtis.lassam.net 
 14. To create a second machine, open machine_2/Vagrantfile

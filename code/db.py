@@ -18,7 +18,6 @@ class SafetyDB(object):
         curtis.lassam.net:80/
         >>> db.close()
         """
-        # TODO: tie these to an external config 
         host = config.cass_host
         port = config.cass_port
         keyspace = config.cass_keyspace
@@ -47,6 +46,17 @@ class SafetyDB(object):
             return_obj['reason'] = row[2]
             return return_obj
         return return_obj
+
+    def createUrl(self, url, hostname, port, path, status, reason):
+        self.cursor.execute("""
+            INSERT INTO safety_dance (url, hostname, port, path, status, reason)
+            VALUES (:url, :hostname, :port, :path, :status, :reason);
+            """, { 'url':url, 
+                    'hostname':hostname, 
+                    'port':int(port), 
+                    'path':path,
+                    'status':status,
+                    'reason':reason })
 
     def close(self):
         self.cursor.close()
