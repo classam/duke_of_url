@@ -36,17 +36,30 @@ def createurl(hostname, port=80, path=""):
             json.dumps(db.checkUrl( hostname + ":" + str(port) + "/" + path )),
             mimetype='application/json' )
 
-@app.route('/urlinfo/1/<hostname>:<int:port>/')
+@app.route('/urlinfo/1/<hostname>:<int:port>/', methods=['GET'])
 def checkurl_nopath(hostname, port):
     return checkurl(hostname, port)
 
-@app.route('/urlinfo/1/<hostname>/<path:path>')
+@app.route('/urlinfo/1/<hostname>/<path:path>', methods=['GET'])
+def createurl_noport(hostname, path):
+    return createurl(hostname, path=path)
+
+@app.route('/urlinfo/1/<hostname>', methods=['GET'])
+def checkurl_justhost(hostname):
+    return checkurl(hostname)
+
+@app.route('/urlinfo/1/<hostname>:<int:port>/', methods=['PUT', 'POST'])
+def createurl_nopath(hostname, port):
+    return createurl(hostname, port)
+
+@app.route('/urlinfo/1/<hostname>/<path:path>', methods=['PUT', 'POST'])
 def checkurl_noport(hostname, path):
     return checkurl(hostname, path=path)
 
-@app.route('/urlinfo/1/<hostname>')
-def checkurl_justhost(hostname):
-    return checkurl(hostname)
+@app.route('/urlinfo/1/<hostname>', methods=['PUT', 'POST'])
+def createurl_justhost(hostname):
+    return createurl(hostname)
+
 
 if __name__ == '__main__':
     app.debug = True
